@@ -33,7 +33,17 @@ class _BeersListView extends StatelessWidget {
         children: [
           const LogoApp(),
           FormTextField(onValue: beersListProvider.onValueChange),
-          Text(beersListProvider.searchValue)
+          Text(beersListProvider.searchValue),
+          beersListProvider.beerList.isNotEmpty ? 
+            Expanded(
+              child: ListView.builder(
+                itemCount: beersListProvider.beerList.length,
+                itemBuilder: (context, index) {
+                  final beer = beersListProvider.beerList[index];
+                  return Text(beer.name);
+                },
+                ),
+            ) : const Text('null')
         ],
       );
   }

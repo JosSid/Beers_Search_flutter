@@ -43,16 +43,19 @@ class _FormTextFieldState extends State<FormTextField> {
            },)
     );
 
-    return TextFormField(
-      controller: textController,
-      onTapOutside: (event) {
-        focusNode.unfocus();
-      },
-      focusNode: focusNode,
-      decoration: inputDecoration,
-      onChanged: (value) {
-        widget.onValue(value);
-      },
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: TextFormField(
+        controller: textController,
+        onTapOutside: (event) {
+          focusNode.unfocus();
+        },
+        focusNode: focusNode,
+        decoration: inputDecoration,
+        onChanged: (value) {
+          widget.onValue(value);
+        },
+      ),
     );
   }
 }
