@@ -40,7 +40,13 @@ class _BeersListView extends StatelessWidget {
                 itemCount: beersListProvider.beerList.length,
                 itemBuilder: (context, index) {
                   final beer = beersListProvider.beerList[index];
-                  return Text(beer.name);
+                  return ListTile(
+                    title: Text(beer.name),
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(beer.imageUrl),
+                    ),
+                    trailing: IconButton(onPressed: () { print(beer.id.toString()); }, icon: const Icon(Icons.arrow_forward_ios),),
+                  );
                 },
                 ),
             ) : const Text('null')

@@ -7,6 +7,8 @@ class BeersListProvider extends ChangeNotifier {
   final getBeers = GetBeers();
   String searchValue = '';
 
+  List<BeerModel> _beerList = [];
+
   List<BeerModel> beerList = [];
 
   BeersListProvider() {
@@ -15,6 +17,7 @@ class BeersListProvider extends ChangeNotifier {
 
   void onValueChange(String value) {
     searchValue = value;
+    beerList = _beerList.where((beer) => beer.name.toLowerCase().contains(searchValue.toLowerCase())).toList();
     notifyListeners();
   }
 
@@ -30,7 +33,8 @@ class BeersListProvider extends ChangeNotifier {
   
   Future<void> initializeBeersList() async {
     try {
-      beerList = await getBeers.getListBeers();
+      _beerList = await getBeers.getListBeers();
+      beerList = _beerList;
       notifyListeners();
     } catch (err) {
       // Manejar errores aquí
