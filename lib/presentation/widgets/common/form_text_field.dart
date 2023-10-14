@@ -4,8 +4,10 @@ class FormTextField extends StatefulWidget {
 
   final ValueChanged<String> onValue;
 
+  final FocusNode? focusNode;
 
-   const FormTextField({super.key, required this.onValue});
+
+   const FormTextField({super.key, required this.onValue,this.focusNode});
 
   @override
   State<FormTextField> createState() => _FormTextFieldState();
@@ -14,16 +16,17 @@ class FormTextField extends StatefulWidget {
 class _FormTextFieldState extends State<FormTextField> {
 
   late TextEditingController textController;
+  late FocusNode focusNode;
 
   @override
   void initState() {
     textController = TextEditingController();
+    focusNode = widget.focusNode ?? FocusNode(); 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final focusNode = FocusNode();
 
     final outlineInputBorder = UnderlineInputBorder(
         borderSide: const BorderSide(color: Colors.transparent),
@@ -36,7 +39,7 @@ class _FormTextFieldState extends State<FormTextField> {
       filled: true,
       prefixIcon: const Icon(Icons.search_outlined),
       suffixIcon:IconButton(
-        icon: const Icon(Icons.cleaning_services_outlined),
+        icon: const Icon(Icons.backspace),
         onPressed: () { 
           textController.clear();
           widget.onValue('');

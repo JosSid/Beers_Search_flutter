@@ -17,7 +17,8 @@ class BeersListProvider extends ChangeNotifier {
 
   void onValueChange(String value) {
     searchValue = value;
-    beerList = _beerList.where((beer) => beer.name.toLowerCase().contains(searchValue.toLowerCase())).toList();
+    beerList = _beerList.where((beer) => 
+      beer.name.toLowerCase().contains(searchValue.toLowerCase())).toList();
     notifyListeners();
   }
 
