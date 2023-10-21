@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:punk_api_flutter/utils/resources.dart';
 
 class LogoApp extends StatelessWidget {
   const LogoApp({super.key});
@@ -8,16 +9,16 @@ class LogoApp extends StatelessWidget {
     return Column(
         children: [
           Align(
-            alignment: Alignment.topCenter, // Alinea en la parte superior y al centro horizontal
+            alignment: Alignment.topCenter, 
             child: Image.asset(
-              'assets/beer.png',
+              Resources.logoImage,
               height: 100,
               width: 100,
             ),
           ),
           const Padding(padding: EdgeInsets.all(5)),
           const Text(
-            'Your Favorite Beer',
+            Resources.logoTitle,
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold

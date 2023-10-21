@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:punk_api_flutter/config/helpers/get_beers.dart';
 import 'package:punk_api_flutter/infrastructure/models/beer_model.dart';
 
+enum StateUI {success,loading,error}
+
 class BeersListProvider extends ChangeNotifier {
 
   final getBeers = GetBeers();
+  StateUI stateUI = StateUI.loading;
   String searchValue = '';
 
   List<BeerModel> _beerList = [];
@@ -12,6 +15,7 @@ class BeersListProvider extends ChangeNotifier {
   List<BeerModel> beerList = [];
 
   BeersListProvider() {
+
     initializeBeersList(); // Llama al método de inicialización en el constructor
   }
 
@@ -25,10 +29,10 @@ class BeersListProvider extends ChangeNotifier {
   Future<void>setBeersList() async {
     try{
       beerList = await getBeers.getListBeers();
+      stateUI = StateUI.success;
       notifyListeners();
     }catch(err){
-      // ignore: avoid_print
-      print(err.toString());
+      stateUI = StateUI.error;
     }
   }
   

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:punk_api_flutter/utils/resources.dart';
 
 class FormTextField extends StatefulWidget {
 
@@ -33,7 +34,7 @@ class _FormTextFieldState extends State<FormTextField> {
         borderRadius: BorderRadius.circular(40));
 
     final inputDecoration = InputDecoration(
-      hintText: 'Search',
+      hintText: Resources.search,
       enabledBorder: outlineInputBorder,
       focusedBorder: outlineInputBorder,
       filled: true,

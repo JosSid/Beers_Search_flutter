@@ -4,6 +4,7 @@ import 'package:punk_api_flutter/presentation/providers/beers_list_provider.dart
 import 'package:punk_api_flutter/presentation/screens/beer_detail_screen.dart';
 import 'package:punk_api_flutter/presentation/widgets/common/form_text_field.dart';
 import 'package:punk_api_flutter/presentation/widgets/logo_app.dart';
+import 'package:punk_api_flutter/utils/resources.dart';
 
 class BeersListScreen extends StatelessWidget {
   const BeersListScreen({super.key});
@@ -14,7 +15,7 @@ class BeersListScreen extends StatelessWidget {
         providers: [ChangeNotifierProvider(create: (_) => BeersListProvider())],
         child: Scaffold(
             appBar: AppBar(
-              title: const Text('Punk Api'),
+              title: const Text(Resources.titleApp),
               centerTitle: true,
             ),
             body: _BeersListView()));
@@ -58,7 +59,7 @@ class _BeersListView extends StatelessWidget {
                   },
                 ),
               )
-            : const Text('null')
+            : const Text(Resources.emptyBeers)
       ],
     );
   }
